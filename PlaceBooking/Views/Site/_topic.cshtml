@@ -1,0 +1,6 @@
+﻿@model IEnumerable<PlaceBooking.Models.Topic>
+
+@foreach (var item in Model)
+{
+    <li><a href="~/tin-tuc/@item.Slug"> @item.Name</a></li>
+}

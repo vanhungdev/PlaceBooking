@@ -1,0 +1,91 @@
+﻿@model PlaceBooking.Models.Ticket
+@{
+    ViewBag.Title = "flightDetail";
+    Layout = "~/Views/Shared/_layOutSite.cshtml";
+}
+<script src="~/public/js/jquery.fancybox.min.js"></script>
+<link href="~/Public/css/jquery.fancybox.min.css" rel="stylesheet" />
+
+<section class="booking">
+    <div class="container bg-white" style="padding:20px;">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="booking-confirmed booking-outer">
+                    <div class="confirmation-title">
+                        <div class="form-title form-title-1">
+                            <h2 class="text-danger">Chi tiết phòng</h2>
+                        </div>
+                        <div class="payment-info detail">
+                            <div class="row">
+                                <div class="col-md-12">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <table class="table" style="margin-top:20px;">
+                                <tbody>
+                                    <tr class="w-100">
+                                        <td class="title">Tên phòng</td>
+                                        <td>@Model.Name</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Giá phòng/ tháng</td>
+                                        <td class="b-id text-danger">@Model.Price.ToString("N0") VND (không tính điện nước/phụ phí)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Loại phòng</td>
+                                        <td class="b-id text-danger">@Model.TicketType</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Tỉnh thành</td>
+                                        <td>@Model.DepartureAddress</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Địa chỉ</td>
+                                        <td>@Model.ArrivalAddress</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Số người</td>
+                                        <td>@Model.GuestTotal</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-title form-title-1">
+                                <h2 class="text-danger">Mô tả chi tiết</h2>
+                            </div>
+                            <div>
+                                <p>@Html.Raw(Model.Description)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-title form-title-1">
+                    <h2 class="text-danger">Hình ảnh</h2>
+                </div>
+                <div class="payment-info detail">
+                    <div class="row">
+                        <div class="col-md-12">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a href="~/Public/images/roomBooking/@Model.Img" data-fancybox="group" data-caption="@Model.Name">
+                        <img height="250" class="p-2" src="~/Public/images/roomBooking/@Model.Img" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .title {
+        font-size: 17px;
+        font-weight: bold;
+        padding-right: 50px;
+        color: #ff0000;
+    }
+</style>

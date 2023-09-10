@@ -1,0 +1,162 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<PlaceBooking.Models.Ticket>
+@{
+    ViewBag.Title = "flightSearch";
+    Layout = "~/Views/Shared/_layOutSite.cshtml";
+}
+
+<section class="flight-destinations">
+    <div class="container bg-white">
+        <div class="row">
+            <form action="~/Checkout/Index" method="post">
+                <input type="hidden" name="songuoi" value="@ViewBag.songuoi" />
+                <div class="col-md-12 col-sm-12">
+                    <div class="flight-head">
+                        <div class="">
+                            <nav aria-label="breadcrumb">
+                                <span style="font-weight:bold; font-size:22px;"> Dach sách địa điểm </span>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div class="flight-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tên pòng</th>
+                                    <th>Tỉnh thành</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Ngày cho thuê</th>
+                                    <th>Giá phòng</th>
+                                    @*                                    <th>Trạng thái</th>*@
+                                    <th>Id</th>
+                                    <th>Xem chi tiết</th>
+                                    <th>Đặt phòng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    string name = item.Name;
+                                    <tr>
+
+                                        <td>@item.Name</td>
+                                        <td>
+
+                                            @item.DepartureAddress
+                                        </td>
+                                        <td width="15%">  @Html.DisplayFor(modelItem => item.ArrivalAddress)</td>
+                                        <td style="font-size:14px;">@item.DepartureDate.ToString("dd/MM/yyyy")</td>
+                                        <td style="font-size:14px;">@item.Price.ToString("N0") VND</td>
+                                        @* <td style="font-size:14px;">
+                                                @if (item.isBooking == 1)
+                                                {
+                                                    <p class="text-success"> Đã cho thuê</p>
+                                                }
+                                                else
+                                                {
+                                                    <p class="text-warning"> Chưa cho thuê</p>
+                                                }
+
+                                            </td>*@
+                                        <td class="text-cam">@Html.DisplayFor(modelItem => item.Id)</td>
+                                        <td>
+                                            <a href="~/room-detail/@item.Id">Xem chi tiết</a>
+                                        </td>
+                                        @if (item.IsBooking == 1)
+                                        {
+
+                                            <td>
+                                                <p class="text-danger">Phòng đã được đặt</p>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                @Html.RadioButton("datve", item.Id, new { name = "idTitket", required = "required" })
+                                                @Html.Label("Đặt phòng")
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                    <div class="pagination-content text-center">
+                        <ul class="pagination">
+
+
+                            <li>
+                                <a href="~/@ViewBag.url?page=1" class="single-btn prev-btn ">
+                                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                @{
+                                    var firstPage = 1;
+                                    if ((int)Model.PageNumber > 1)
+                                    {
+                                        firstPage = (int)Model.PageNumber - 1;
+                                    }
+
+                                    var lastpage = Model.PageNumber;
+                                    if (lastpage < Model.PageCount)
+                                    {
+                                        lastpage = (int)Model.PageNumber + 1;
+                                    }
+
+                                }
+                                <a href="~/@ViewBag.url?page=@firstPage" class="single-btn prev-btn ">
+                                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                            @for (int i = Model.PageNumber; i <= Model.PageCount; i++)
+                            {
+
+                                if (i < Model.PageNumber + 5)
+                                {
+                                    <li id="active_@i"><a href="~/@ViewBag.url?page=@i" class="single-btn">@i  </a></li>
+                                }
+
+                            }
+                            <li>
+                                <a href="~/@ViewBag.url?page=@lastpage" class="single-btn next-btn">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/@ViewBag.url?page=@Model.PageCount" class="single-btn next-btn">
+                                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="container ">
+                    <div class="row">
+                        <div class="col-md-10">
+
+                        </div>
+
+                        <button class="btn-blue btn-red btn-style-1 " type="submit">Tiếp theo</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</section>
+
+<!-- Destination Ends -->
+<script>
+    $("#active_@Model.PageNumber").addClass("active");
+
+    function ajaxShowItem(t) {
+        console.log(t.value)
+    }
+</script>

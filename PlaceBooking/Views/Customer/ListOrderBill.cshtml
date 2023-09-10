@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PlaceBooking.Models.BillOrder>
+<section class="flight-destinations">
+    <div class="container bg-white">
+        <h2></h2>
+        <div class="row">
+            <div class="account-info-wrapper">
+                <h2 style="text-align:center;">Hóa đơn</h2>
+            </div>
+            <div class="col-md-12 col-sm-12">
+                <div class="flight-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Mã hợp đồng</th>
+                                <th width="30%">Tên khách hàng</th>
+                                <th width="20%">Hóa đơn tháng</th>
+                                <th width="20%">Thanh toán</th>
+                                <th width="20%">PTTT</th>
+                                <th width="20%">Tiền điện </th>
+                                <th width="20%">Tiền nước</th>
+                                <th width="20%">Bill Tháng</th>
+                                <th width="20%">Tổng tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td style="font-size:14px;">@Html.DisplayFor(modelItem => item.OrderCode)</td>
+                                <td><a class=" font-weight-bold card-link " href=""> @item.Name</a></td>
+                                <td> @item.BillMonth.ToString("dd/MM/yyyy")</td>
+                                <td style="font-size:14px;">
+                                    @if (item.PaymentStatus == 1)
+                                    {
+                                        <p class="text-success"> Đã thanh toán</p>
+                                    }
+                                    else
+                                    {
+                                        <p class="text-danger"> Chưa thanh toán</p>
+                                    }
+                                </td>
+                                <td style="font-size:14px;">
+                                    <p class="text-danger"> Chuyển khoản</p>
+                                </td>
+                                <td><a class=" font-weight-bold card-link " href=""> @item.ElectricityBillTotal.ToString("N0") VND</a></td>
+                                <td><a class=" font-weight-bold card-link " href=""> @item.WaterMoneyTotal.ToString("N0") VND</a></td>
+                                <td><a class=" font-weight-bold card-link " href=""> @item.BillMonth.ToString("dd/MM/yyyy")</a></td>
+                                <td><a class=" font-weight-bold card-link " href=""> @item.Total.ToString("N0") VND</a></td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

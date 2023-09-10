@@ -1,0 +1,81 @@
+﻿@model PlaceBooking.Models.User
+
+@{
+    ViewBag.Title = "Myaccount";
+    Layout = "~/Views/Shared/_layOutSite.cshtml";
+}
+
+
+<div class="checkout-area pb-80 pt-100">
+    <div class="container">
+        <div class="row">
+            @Html.Partial("_MessgeAlert")
+            <div class="ml-auto mr-auto col-lg-12" style="margin-top:50px;">
+                <div class="checkout-wrapper">
+                    <div id="faq" class="panel-group">
+                        <div class="panel panel-default single-my-account">
+                            <div id="my-account-1">
+                                <div class="panel-body">
+                                    <form action="" method="POST">
+                                        <input type="hidden" value="@Model.Status" name="status" />
+                                        <input type="hidden" value="@Model.Gender" name="gender" />
+                                        <input type="hidden" value="@Model.Access" name="access" />
+                                        <input type="hidden" value="@Model.Username" name="username" />
+                                        <input type="hidden" value="@Model.Password" name="password" />
+                                        <div class="myaccount-info-wrapper">
+                                            <div class="account-info-wrapper">
+                                                <h2 style="text-align:center;">Account information</h2>
+                                            </div>
+                                            <div class="row">
+                                                <span class="text-danger">@ViewBag.success</span>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="billing-info">
+                                                        <label>User name</label>
+                                                        <input type="hidden" name="id" value="@Model.Id">
+                                                        <input type="text" value="@Model.Username" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="billing-info">
+                                                        <label>Full Name</label>
+                                                        <input type="text" name="fullname" value="@Model.Fullname">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12">
+                                                    <div class="billing-info">
+                                                        <label>Address </label>
+                                                        <input type="text" name="address" value="@Model.Address">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="billing-info">
+                                                        <label>Phone Number</label>
+                                                        <input type="text" name="phone" value="@Model.Phone">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="billing-info">
+                                                        <label>Email</label>
+                                                        <input type="email" name="email" value="@Model.Email">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="billing-back-btn">
+                                                <div class="billing-btn">
+                                                    <button class="btn-blue btn-red btn-style-1 " type="submit">Update</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("ListOderCus", "Customer")
+@Html.Action("ListOrderBill", "Customer")
