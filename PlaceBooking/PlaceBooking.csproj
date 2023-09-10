@@ -612,16 +612,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\AuthController.cs" />
-    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
-    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
-    <Compile Include="Areas\Admin\Controllers\BillOrdersController.cs" />
-    <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
-    <Compile Include="Areas\Admin\Controllers\PostController.cs" />
-    <Compile Include="Areas\Admin\Controllers\TicketsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\TopicController.cs" />
-    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\CustomAuthorizeAttribute.cs" />
     <Compile Include="Common\Userlogin.cs" />
@@ -661,37 +651,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_layOutAdmin.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_mainmenu.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_leftMenu.cshtml" />
-    <Content Include="Areas\Admin\Views\Auth\_login.cshtml" />
-    <Content Include="Areas\Admin\Views\Dashboard\_adminSession.cshtml" />
-    <Content Include="Areas\Admin\Views\Post\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Post\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Post\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Post\Trash.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_MessgeAlert.cshtml" />
-    <Content Include="Areas\Admin\Views\Topic\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Topic\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Topic\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Topic\Trash.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Tickets\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Tickets\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders\_BookingConnfig.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders\Trash.cshtml" />
-    <Content Include="Areas\Admin\Views\Tickets\Trash.cshtml" />
-    <Content Include="Areas\Admin\Views\Tickets\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\401.cshtml" />
-    <Content Include="Areas\Admin\Views\User\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\User\Trash.cshtml" />
-    <Content Include="Areas\Admin\Views\BillOrders\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\BillOrders\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Site\roomSearchOnway.cshtml" />
@@ -734,7 +693,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
