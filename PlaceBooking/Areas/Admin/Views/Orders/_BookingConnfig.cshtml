@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PlaceBooking.Models.Ticket>
+﻿@model IEnumerable<PlaceBooking.Models.Room>
 <h2>Các vé đã book</h2>
 @foreach (var item in Model)
 {
@@ -19,7 +19,7 @@
             </tr>
             <tr>
                 <td class="title">Nơi đến</td>
-                <td>@item.ArrivalAddress</td>
+                <td>@item.FullAddress</td>
             </tr>
         </tbody>
     </table>

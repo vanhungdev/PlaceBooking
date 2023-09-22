@@ -17,7 +17,7 @@ namespace PlaceBooking.Models
         public int? UserId { get; set; }
 
         [Column(TypeName = "smalldatetime")]
-        public DateTime? CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
 
         [StringLength(1000)]
         public string Comment1 { get; set; }
@@ -31,6 +31,6 @@ namespace PlaceBooking.Models
 
         public int? Type { get; set; }
 
-        public int? TopicID { get; set; }
+        public int? TopicId { get; set; }
     }
 }

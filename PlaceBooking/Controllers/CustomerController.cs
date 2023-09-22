@@ -94,6 +94,7 @@ namespace PlaceBooking.Controllers
                     Session.Add(CommonConstants.CUSTOMER_SESSION, user);
                     Session["userName11"] = user.Fullname;
                     Session["id"] = user.Id;
+                    Session["user"] = user.Username;
                     if (!Response.IsRequestBeingRedirected)
                     Message.set_flash("Đăng nhập thành công ", "success");
                     var id = string.IsNullOrEmpty(Session["idTricket"].ToString()) ? 0 : int.Parse(Session["idTricket"].ToString());
@@ -318,6 +319,7 @@ namespace PlaceBooking.Controllers
                 Session.Add(CommonConstants.CUSTOMER_SESSION, singleUser);
                 Session["userName11"] = singleUser.Fullname;
                 Session["id"] = singleUser.Id;
+                Session["user"] = singleUser.Username;
                 if (!Response.IsRequestBeingRedirected)
                     Message.set_flash("Đăng nhập thành công ", "success");
                 var id = string.IsNullOrEmpty(Session["idTricket"].ToString()) ? 0 : int.Parse(Session["idTricket"].ToString());

@@ -18,7 +18,7 @@ namespace PlaceBooking.Controllers
         }
         [HttpPost]
         public ActionResult roomSearch(FormCollection fc, int? page)
-        {     
+        {
             if (page == null) page = 1;
             int pageSize = 8;
             int pageNumber = (page ?? 1);
@@ -30,8 +30,8 @@ namespace PlaceBooking.Controllers
             float soTienTu = float.Parse(fc["soTienTu"]);
             float soTienDen = float.Parse(fc["soTienDen"]);
 
-            var list = db.Rooms.Where(m => m.DepartureAddress.Contains(departure_address) 
-            && m.GuestTotal == songuoi 
+            var list = db.Rooms.Where(m => m.DepartureAddress.Contains(departure_address)
+            && m.GuestTotal == songuoi
             && (m.Price >= soTienTu && m.Price <= soTienDen)).ToList();
             return View("roomSearchOnway", list.ToPagedList(pageNumber, pageSize));
         }
@@ -64,10 +64,10 @@ namespace PlaceBooking.Controllers
 
             ViewBag.url = "tin-tuc";
             int pageNumber = (page ?? 1);
-            var listPost = db.Posts.Where(m => m.Status == 1 ).ToList();
+            var listPost = db.Posts.Where(m => m.Status == 1).ToList();
             return View("postOftoPic", listPost.ToPagedList(pageNumber, pageSize));
         }
-        
+
         public ActionResult topic()
         {
 
@@ -92,9 +92,18 @@ namespace PlaceBooking.Controllers
             ViewBag.Bra = single.Title;
             return View("PostDetail", single);
         }
-        
-            public ActionResult roomDetail(int id)
+
+        public ActionResult roomDetail(int id)
         {
+            if (Session["id"].Equals(""))
+            {
+                ViewBag.name = "";
+            }
+            else
+            {
+                ViewBag.name = Session["user"];
+                ViewBag.id = int.Parse(Session["id"].ToString());
+            }
             var single = db.Rooms.Where(m => m.Status == 1 && m.Id == id).First();
             return View("roomDetail", single);
         }

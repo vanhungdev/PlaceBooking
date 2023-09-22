@@ -148,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="MomoAPI\lib\log4net.dll" />
@@ -628,6 +629,7 @@
     <Compile Include="Common\CustomAuthorizeAttribute.cs" />
     <Compile Include="Common\Userlogin.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModulesController.cs" />
@@ -734,6 +736,7 @@
     <Content Include="Views\Customer\orderDetailCus.cshtml" />
     <Content Include="Views\Customer\ListOrderBill.cshtml" />
     <Content Include="Views\Customer\VerifyOTP.cshtml" />
+    <Content Include="Views\Comment\Comment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

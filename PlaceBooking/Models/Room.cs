@@ -18,7 +18,7 @@ namespace PlaceBooking.Models
         public string RoomType { get; set; }
         public string Img { get; set; }      
         public string DepartureAddress { get; set; }
-        public string ArrivalAddress { get; set; }
+        public string FullAddress { get; set; }
         public DateTime DepartureDate { get; set; }
         public int? GuestTotal { get; set; }
         public double Price { get; set; }

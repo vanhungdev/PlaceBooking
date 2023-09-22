@@ -42,7 +42,7 @@
                                     </tr>
                                     <tr>
                                         <td class="title">Địa chỉ</td>
-                                        <td>@Model.ArrivalAddress</td>
+                                        <td>@Model.FullAddress</td>
                                     </tr>
                                     <tr>
                                         <td class="title">Số người</td>
@@ -79,6 +79,41 @@
                 </div>
             </div>
         </div>
+    </div>
+
+
+    <div class="container bg-white col" style="padding:20px;">
+        <h2>Bình Luận</h2>
+        @if (ViewBag.name != "")
+        {
+            <div class="container mt-5 bg-light p-3">
+                <div class="bg-light p-2">
+                    <form method="post" action="~/Comment/Create">
+                        <div class="form-group d-flex flex-row align-items-start">
+                            <input type="hidden" name="TopicId" value="@Model.Id" />
+                            <input type="hidden" name="parentId" value="0" />
+                            <input type="hidden" name="type" value="2" />
+                            <input type="hidden" name="image" value="https://www.translitescaffolding.com/wp-content/uploads/2013/06/user-avatar.png" />
+@*                            <img class="rounded-circle" src="https://i.pinimg.com/550x/e5/b5/7e/e5b57e95b4157c98b43090584290c9dc.jpg" width="40">*@
+                            <textarea class="form-control ml-1 shadow-none" name="comment1" placeholder="Nhập bình luận của bạn"></textarea>
+                        </div>
+                        <div class="mt-2 text-right">
+                            <button class="btn btn-primary btn-sm shadow-none" type="submit">Gửi bình luận</button>
+                        </div>
+                    </form>
+                </div>
+                @Html.Action("Detail", "comment", new { type = 2, TopicId = Model.Id })
+            </div>
+        }
+        else
+        {
+            <div class="container mt-5 bg-light p-3">
+                <div class="bg-light p-2">
+                    <p class="text-danger">Vui lòng đăng nhập để viết bình luận</p>
+                </div>
+                @Html.Action("Detail", "comment", new { type = 2, TopicId = Model.Id })
+            </div>
+        }
     </div>
 </section>
 <style>
