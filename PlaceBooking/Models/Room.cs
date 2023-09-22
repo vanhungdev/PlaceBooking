@@ -6,16 +6,16 @@ namespace PlaceBooking.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ticket")]
-    public partial class Ticket
+    [Table("room")]
+    public partial class Room
     {
        
          [Key]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Airport { get; set; }
-        public string TicketType { get; set; }
+        public string PlaceDetail { get; set; }
+        public string RoomType { get; set; }
         public string Img { get; set; }      
         public string DepartureAddress { get; set; }
         public string ArrivalAddress { get; set; }
@@ -30,6 +30,5 @@ namespace PlaceBooking.Models
         public int UpdatedBy { get; set; }
         public int Status { get; set; }
         public int IsBooking { get; set; }
-        public int IsWithFurniture { get; set; }
     }
 }

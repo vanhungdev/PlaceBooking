@@ -11,7 +11,7 @@ namespace PlaceBooking.Controllers
 {
     public class SiteController : Controller
     {
-        BanVeXeDbContext db = new BanVeXeDbContext();
+        PlaceBookingDbContext db = new PlaceBookingDbContext();
         public ActionResult Index()
         {
             return View();
@@ -30,9 +30,9 @@ namespace PlaceBooking.Controllers
             float soTienTu = float.Parse(fc["soTienTu"]);
             float soTienDen = float.Parse(fc["soTienDen"]);
 
-            var list = db.Tickets.Where(m => m.DepartureAddress.Contains(departure_address) 
+            var list = db.Rooms.Where(m => m.DepartureAddress.Contains(departure_address) 
             && m.GuestTotal == songuoi 
-            && m.IsWithFurniture == noithat && (m.Price >= soTienTu && m.Price <= soTienDen)).ToList();
+            && (m.Price >= soTienTu && m.Price <= soTienDen)).ToList();
             return View("roomSearchOnway", list.ToPagedList(pageNumber, pageSize));
         }
 
@@ -43,7 +43,7 @@ namespace PlaceBooking.Controllers
             ViewBag.url = "chuyen-xe";
             int pageNumber = (page ?? 1);
             ViewBag.breadcrumb = "Tất cả chuyến bay";
-            var list_room = db.Tickets.Where(m => m.Status == 1).ToList();
+            var list_room = db.Rooms.Where(m => m.Status == 1).ToList();
             return View("allroom", list_room.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult postOftoPic(int? page, string slug)
@@ -95,7 +95,7 @@ namespace PlaceBooking.Controllers
         
             public ActionResult roomDetail(int id)
         {
-            var single = db.Tickets.Where(m => m.Status == 1 && m.Id == id).First();
+            var single = db.Rooms.Where(m => m.Status == 1 && m.Id == id).First();
             return View("roomDetail", single);
         }
         public ActionResult lienHe()

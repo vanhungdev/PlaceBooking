@@ -1,0 +1,26 @@
+﻿@model IEnumerable<PlaceBooking.Models.Ticket>
+<h2>Các vé đã book</h2>
+@foreach (var item in Model)
+{
+    
+    <table class="table border" style="margin-top:20px;">
+        <tbody>
+            <tr>
+                <td class="title">Tổng tiền</td>
+                <td class="b-id text-danger">@item.Price.ToString("N0") VND</td>
+            </tr>
+            <tr>
+                <td class="title">Thời gian xuất bến</td>
+                <td>@item.DepartureDate.ToString("dd-MM-yyyy") ||  Lúc @item.DepartureDate.ToString("hh:mm tt")</td>
+            </tr>
+            <tr>
+                <td class="title">Nơi xuất phát (Bến Xe)</td>
+                <td>@item.PlaceDetail</td>
+            </tr>
+            <tr>
+                <td class="title">Nơi đến</td>
+                <td>@item.ArrivalAddress</td>
+            </tr>
+        </tbody>
+    </table>
+}

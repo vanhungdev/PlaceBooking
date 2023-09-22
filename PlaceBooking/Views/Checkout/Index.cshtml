@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PlaceBooking.Models.Ticket>
+﻿@model IEnumerable<PlaceBooking.Models.Room>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_layOutSite.cshtml";
@@ -29,7 +29,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="title">Loại phòng</td>
-                                                <td class="b-id text-danger">@item.TicketType</td>
+                                                <td class="b-id text-danger">@item.RoomType</td>
                                             </tr>
                                             <tr>
                                                 <td class="title">Tỉnh thành</td>

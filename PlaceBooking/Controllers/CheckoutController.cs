@@ -12,12 +12,12 @@ namespace PlaceBooking.Controllers
     public class CheckoutController : Controller
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        BanVeXeDbContext db = new BanVeXeDbContext();
+        PlaceBookingDbContext db = new PlaceBookingDbContext();
         // GET: Checkout
         [HttpPost]
         public ActionResult Index(FormCollection fc)
         {
-            var list = new List<Ticket>();
+            var list = new List<Room>();
             var id1 = string.IsNullOrEmpty(Session["id"].ToString()) ? 0 : int.Parse(Session["id"].ToString());
             if (id1 == 0)
             {
@@ -25,7 +25,7 @@ namespace PlaceBooking.Controllers
                 return Redirect("~/dang-nhap");
             }
             int id = int.Parse(fc["datve"]);
-            var list1 = db.Tickets.Find(id);
+            var list1 = db.Rooms.Find(id);
             list.Add(list1);
             ViewBag.ve1 = id;
             return View("", list.ToList());
@@ -33,7 +33,7 @@ namespace PlaceBooking.Controllers
         [HttpPost]
         public ActionResult checkOut(Order order, FormCollection fc)
         {
-            string orderCode ="MaVE"+DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second;
+            string orderCode = "DH"+DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second;
             Session["OrderId"] = orderCode;
             float total = float.Parse(fc["total"]);
             int id1 = int.Parse(fc["veOnvay"]);
@@ -52,10 +52,10 @@ namespace PlaceBooking.Controllers
         public ActionResult _BookingConnfig(int orderId)
         {
             var list = db.Ordersdetails.Where(m => m.Orderid == orderId).ToList();
-            var list1 = new List<Ticket>();
+            var list1 = new List<Room>();
             foreach (var item in list)
             {
-                Ticket ticket = db.Tickets.Find(item.TicketId);
+                Room ticket = db.Rooms.Find(item.TicketId);
                 list1.Add(ticket);
             }
 
@@ -65,7 +65,7 @@ namespace PlaceBooking.Controllers
         public void SaveOrder(Order order, float total,int id1,string veReturn, string paymentMethod, int StatusPayment, string ordercode)
         {
             // tru so luong nghe
-            var ticket = db.Tickets.Find(id1);
+            var ticket = db.Rooms.Find(id1);
             order.CreateDate = DateTime.Now;
             order.Status = 2;
             order.UserId = string.IsNullOrEmpty(Session["id"].ToString()) ? 0 : int.Parse(Session["id"].ToString()) ;
@@ -95,7 +95,7 @@ namespace PlaceBooking.Controllers
                 orderDetail2.Orderid = lastOrderID;
                 db.Ordersdetails.Add(orderDetail2);
                 // tru so luong nghe
-                var ticket2 = db.Tickets.Find(id2);
+                var ticket2 = db.Rooms.Find(id2);
                 ticket2.GuestTotal = ticket2.GuestTotal - order.GuestTotal;
                 db.Entry(ticket2).State = EntityState.Modified;
             }

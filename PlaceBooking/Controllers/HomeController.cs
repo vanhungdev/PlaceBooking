@@ -9,7 +9,7 @@ namespace PlaceBooking.Controllers
 {
     public class HomeController : Controller
     {
-        BanVeXeDbContext db = new BanVeXeDbContext();
+        PlaceBookingDbContext db = new PlaceBookingDbContext();
         // GET: Home
         public ActionResult Index()
         {

@@ -11,7 +11,7 @@ namespace PlaceBooking.Controllers
     public class ModulesController : Controller
     {
         // GET: Modules
-        BanVeXeDbContext db = new BanVeXeDbContext();
+        PlaceBookingDbContext db = new PlaceBookingDbContext();
         public ActionResult _Header1()
         {
             if (!String.IsNullOrEmpty((string)Session["userName11"]))

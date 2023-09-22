@@ -30,7 +30,7 @@ namespace PlaceBooking.Controllers
         private readonly string redirectUri = "http://localhost:22222/Customer/GoogleCallback";
         private readonly string userInfoUrl = "https://www.googleapis.com/oauth2/v3/userinfo";
 
-        private BanVeXeDbContext db = new BanVeXeDbContext();
+        private PlaceBookingDbContext db = new PlaceBookingDbContext();
         // GET: Customer
 
         public ActionResult Login()
